@@ -17,6 +17,7 @@ token = ""        # kendi ntfy sunucun için isteğe bağlı
 timezone = "Europe/Istanbul"
 
 [reminders]
+# (Henüz uygulanmadı: ödev/gönderi izinleri okul yöneticisi onayı gerektiriyor.)
 thresholds_days = [3, 1, 0]
 notify_overdue = true
 
@@ -25,12 +26,15 @@ notify_updates = false
 exclude_classes = []
 
 [posts]
+# (Henüz uygulanmadı: ödev/gönderi izinleri okul yöneticisi onayı gerektiriyor.)
 enabled = true            # izin yoksa otomatik devre dışı kalır
 
 [assignments]
+# (Henüz uygulanmadı: ödev/gönderi izinleri okul yöneticisi onayı gerektiriyor.)
 enabled = false           # okul yöneticisinin onayı gerekiyor; onay gelirse true yap
 
 [download]
+# (Henüz uygulanmadı.)
 enabled = false
 folder = ""
 extensions = []           # boş = hepsi

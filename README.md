@@ -18,17 +18,17 @@ Microsoft Graph ve ntfy'ye HTTP istekleri yapar. Sürekli çalışan bir süreç
 |---|---|
 | Yeni dosya bildirimi (ilk taramada bildirim yok, sonra yalnızca yeniler) | ✅ Çalışıyor |
 | `status`, `test-notify`, `run --dry-run` | ✅ Çalışıyor |
-| Ödev hatırlatmaları ve günlük özet | 🚧 Planlandı (okul yöneticisi onayı gerekiyor) |
-| Gönderi (post) bildirimleri | 🚧 Planlandı (okul yöneticisi onayı gerekiyor) |
-| Zamanlanmış görev kurulumu (`install_task.ps1`) | 🚧 Planlandı |
-| Otomatik dosya indirme | 🚧 Planlandı, varsayılan kapalı |
+| Günlük otomatik çalışma (Görev Zamanlayıcı) ve `run.bat` ile elle çalıştırma | ✅ Çalışıyor |
+| Ödev hatırlatmaları, günlük özet | ⏸️ Yok: ödev izni (`EduAssignments.ReadBasic`) İYTE'de yönetici onayı istiyor |
+| Gönderi (post) bildirimleri | ⏸️ Yok: kanal mesajı izni yönetici onayı istiyor |
+| Otomatik dosya indirme | 💡 Fikir aşamasında, varsayılan kapalı |
 
 ## Kurulum
 
 Gereksinimler: Windows, Python 3.11+, telefonda [ntfy uygulaması](https://ntfy.sh/).
 
 ```powershell
-git clone https://github.com/<kullanici-adin>/teams-notifier
+git clone https://github.com/Xerkara/teams-notifier
 cd teams-notifier
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
@@ -43,11 +43,22 @@ python -m venv .venv
 4. Deneme bildirimi gönderir.
 5. Mevcut dosyaları "görüldü" diye kaydeder; bunlar için bildirim **gönderilmez**.
 
-Sonra elle ya da zamanlayıcıyla:
+### Her gün otomatik çalıştırma
 
 ```powershell
-.\.venv\Scripts\python.exe -m teams_notifier run
+.\scripts\install_task.ps1              # her gün 09:00
+.\scripts\install_task.ps1 -Time 08:30  # saati değiştirmek için tekrar çalıştır
+.\scripts\install_task.ps1 -Uninstall   # görevi kaldır
 ```
+
+Görev Zamanlayıcı'ya yönetici hakkı olmadan, mevcut kullanıcı adına kurulur. Bilgisayar o saatte kapalıysa
+açıldığında bir kez çalışır; ağ yoksa ağ gelene kadar bekler; konsol penceresi açmaz. Sonuçlar
+`%LOCALAPPDATA%\teams-notifier\logs\` altındaki log dosyasına yazılır.
+
+### Elle çalıştırma
+
+`scripts\run.bat` dosyasına çift tıkla. Masaüstü kısayolu için dosyaya sağ tık → *Gönder* →
+*Masaüstü (kısayol oluştur)*.
 
 ### Komutlar
 
