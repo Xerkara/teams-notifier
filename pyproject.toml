@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "teams-notifier"
+version = "0.1.0"
+description = "Teams sınıflarındaki yeni dosyaları ntfy ile telefona bildiren küçük araç"
+requires-python = ">=3.11"
+dependencies = [
+    "msal>=1.28",
+    "msal-extensions>=1.1",
+    "requests>=2.31",
+    "tzdata; platform_system == 'Windows'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+teams-notifier = "teams_notifier.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

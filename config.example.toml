@@ -1,0 +1,37 @@
+# Bu dosyayı %LOCALAPPDATA%\teams-notifier\config.toml olarak kopyala
+# (`teams-notifier setup` bunu senin için yapacak).
+# DİKKAT: ntfy topic/token gizlidir; bu yüzden gerçek config proje klasöründe değil
+# kullanıcı veri klasöründe tutulur. Bu örnek dosyaya gerçek değer yazma.
+
+[auth]
+# Boş bırakılırsa "Microsoft Graph Command Line Tools" istemcisi kullanılır.
+client_id = ""
+tenant = "organizations"
+
+[ntfy]
+server = "https://ntfy.sh"
+topic = ""        # setup tahmin edilemez uzun bir topic üretir
+token = ""        # kendi ntfy sunucun için isteğe bağlı
+
+[schedule]
+timezone = "Europe/Istanbul"
+
+[reminders]
+thresholds_days = [3, 1, 0]
+notify_overdue = true
+
+[files]
+notify_updates = false
+exclude_classes = []
+
+[posts]
+enabled = true            # izin yoksa otomatik devre dışı kalır
+
+[assignments]
+enabled = false           # okul yöneticisinin onayı gerekiyor; onay gelirse true yap
+
+[download]
+enabled = false
+folder = ""
+extensions = []           # boş = hepsi
+max_size_mb = 200

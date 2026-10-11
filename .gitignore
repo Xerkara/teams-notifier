@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Gerçek ayarlar ve veriler normalde proje dışında durur; kazara eklenmesin.
+config.toml
+*.db
+token_cache.bin
+logs/
+*.log
